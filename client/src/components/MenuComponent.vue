@@ -1,5 +1,5 @@
 <template>
-    <v-app id="inspire" dark>
+    <div >
         <v-navigation-drawer
                 v-model="drawer"
                 clipped
@@ -29,11 +29,13 @@
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title>QRit</v-toolbar-title>
         </v-toolbar>
+        <v-content>
 
+        </v-content>
         <v-footer app fixed>
             <span>&copy; 2017</span>
         </v-footer>
-    </v-app>
+    </div>
 </template>
 
 <script>

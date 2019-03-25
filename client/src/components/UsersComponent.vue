@@ -1,8 +1,7 @@
 <template>
   <div class="hello">
-    <div class="muts" v-for="x in breeds">
-        <h3>{{x[0]}}</h3>
-        <p v-for="types in x[1]">{{types}}</p>
+    <div class="test">
+        <h3>{{test}}</h3>
     </div>
   </div>
 </template>
@@ -14,14 +13,14 @@ export default {
   data() {
       return {
           data:{},
-          breeds:[],
+          test:"",
       }
   },
   created(){
       try{
           this.udata = UsersService.getUsers().then((data) => {
               console.log(data)
-              this.breeds = Object.entries(data)
+              this.test = data
               alert("done1")
           })
       }
@@ -37,7 +36,7 @@ export default {
 <style scoped>
 h3 {
   margin: 40px 0 0;
-}
+    color: #42b983;}
 ul {
   list-style-type: none;
   padding: 0;

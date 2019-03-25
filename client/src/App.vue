@@ -3,10 +3,11 @@
     <v-content>
       <menu-component></menu-component>
       <img alt="Vue logo" src="./assets/logo.png">
-      <UsersComponent/>
       <v-container fluid>
+        <UsersComponent/>
         <router-view></router-view>
-      </v-container>    </v-content>
+      </v-container>
+    </v-content>
   </v-app>
 </template>
 
