@@ -1,8 +1,7 @@
 <template>
   <v-app dark>
+    <menu-component></menu-component>
     <v-content>
-      <menu-component></menu-component>
-      <img alt="Vue logo" src="./assets/logo.png">
       <v-container fluid>
         <UsersComponent/>
         <router-view></router-view>
@@ -33,4 +32,10 @@ export default {
   text-align: center;
   color:aquamarine;
 }
+</style>
+<style>
+  html{
+    overflow-y:auto;
+  }
+  /*v-navigation-drawer v-navigation-drawer--clipped v-navigation-drawer--fixed v-navigation-drawer--is-mobile v-navigation-drawer--open theme--dark*/
 </style>

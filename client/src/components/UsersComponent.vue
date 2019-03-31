@@ -1,9 +1,57 @@
 <template>
-  <div class="hello">
-    <div class="test">
-        <h3>{{test}}</h3>
-    </div>
-  </div>
+  <!--<div class="hello">-->
+    <!--&lt;!&ndash;<div class="test">&ndash;&gt;-->
+        <!--&lt;!&ndash;<h3>{{test}}</h3>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <v-form lazy-validation ref="registerform" v-model="valid">
+          <v-container app>
+              <v-layout wrap>
+                  <v-flex xs12 md3>
+                      <v-text-field
+                              v-model="firstname"
+                              :rules="firstNameRules"
+                              :counter="30"
+                              label="First name"
+                              required
+                      ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 md3>
+                      <v-text-field
+                              v-model="lastname"
+                              :rules="nameRules"
+                              :counter="15"
+                              label="Last name"
+                              required
+                      ></v-text-field>
+                  </v-flex>
+
+                  <v-flex xs12 md3>
+                      <v-text-field
+                              v-model="email"
+                              :rules="emailRules"
+                              :counter="50"
+                              label="E-mail"
+                              required
+                      ></v-text-field>
+                  </v-flex>
+
+                  <v-flex xs12 md3>
+                      <v-text-field
+                              v-model="password"
+                              :rules="passwordRules"
+                              :counter="50"
+                              label="Password"
+                              :type="'password'"
+                              required
+                      ></v-text-field>
+                  </v-flex>
+              <v-flex>
+                  <v-btn @click.prevent="register" large>Register</v-btn>
+              </v-flex>
+              </v-layout>
+          </v-container>
+      </v-form>
+  <!--</div>-->
 </template>
 
 <script>
@@ -12,10 +60,42 @@ export default {
   name: 'UsersComponent',
   data() {
       return {
+          valid: false,
+          password:"",
+          firstname: '',
+          lastname: '',
+          nameRules: [
+              v => !!v || 'First Name is required',
+              v => v.length <= 30 || 'First Name must be less or equal to 30 characters'
+          ],
+          firstNameRules: [
+              v => !!v || 'Last Name is required',
+              v => v.length <= 15 || 'Last Name must be less or equal to 15 characters'
+          ],
+          email: '',
+          emailRules: [
+              v => !!v || 'E-mail is required',
+              v => /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(v) || 'E-mail must be valid'
+          ],
+          passwordRules: [
+              v => !!v || "Password is required",
+              v => v.length >= 8 || "Password must have at least 8 characters",
+              v => /[0-9]+/.test(v) || "Password must contain at least 1 digit",
+              v => v.length <= 50 || "Password must be less or equal to 50 characters"
+          ],
           data:{},
           test:"",
       }
   },
+    methods:{
+        register(){
+            if(this.$refs.registerform.validate())
+            {
+
+            }
+     },
+
+    },
   created(){
       try{
           this.udata = UsersService.getUsers().then((data) => {
