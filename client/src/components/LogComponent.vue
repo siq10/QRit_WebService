@@ -1,30 +1,8 @@
 <template>
-  <!--<div class="hello">-->
-    <!--&lt;!&ndash;<div class="test">&ndash;&gt;-->
-        <!--&lt;!&ndash;<h3>{{test}}</h3>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-      <v-form lazy-validation ref="registerform" v-model="valid">
           <v-container app>
+            <v-form lazy-validation ref="loginform" v-model="valid"/>
               <v-layout wrap>
-                  <v-flex xs12 md3>
-                      <v-text-field
-                              v-model="firstname"
-                              :rules="firstNameRules"
-                              :counter="30"
-                              label="First name"
-                              required
-                      ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 md3>
-                      <v-text-field
-                              v-model="lastname"
-                              :rules="nameRules"
-                              :counter="15"
-                              label="Last name"
-                              required
-                      ></v-text-field>
-                  </v-flex>
-
+                 
                   <v-flex xs12 md3>
                       <v-text-field
                               v-model="email"
@@ -46,32 +24,21 @@
                       ></v-text-field>
                   </v-flex>
               <v-flex>
-                  <v-btn @click.prevent="register" large>Register</v-btn>
+                  <v-btn @click.prevent="login" large>Log In</v-btn>
               </v-flex>
               </v-layout>
+            </v-form>
           </v-container>
-      </v-form>
-  <!--</div>-->
 </template>
 
 <script>
 import UsersService from "../UsersService"
 export default {
-  name: 'UsersComponent',
+  name: 'LogComponent',
   data() {
       return {
           valid: false,
           password:"",
-          firstname: '',
-          lastname: '',
-          nameRules: [
-              v => !!v || 'Last Name is required',
-              v => v.length <= 30 || 'Last Name must be less or equal to 30 characters'
-          ],
-          firstNameRules: [
-              v => !!v || 'First Name is required',
-              v => v.length <= 15 || 'First Name must be less or equal to 15 characters'
-          ],
           email: '',
           emailRules: [
               v => !!v || 'E-mail is required',
@@ -88,12 +55,11 @@ export default {
       }
   },
     methods:{
-        register(){
-            if(this.$refs.registerform.validate())
+        login(){
+            if(this.$refs.loginrform.validate())
             {
 
             }
-            
      },
 
     },

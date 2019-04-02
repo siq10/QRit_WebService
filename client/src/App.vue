@@ -3,7 +3,8 @@
     <menu-component></menu-component>
     <v-content>
       <v-container fluid>
-        <UsersComponent/>
+        <UsersComponent v-if="$store.state.menuchoice===2"></UsersComponent>
+        <LogComponent v-if="$store.state.menuchoice===1"></LogComponent>
         <router-view></router-view>
       </v-container>
     </v-content>
@@ -13,11 +14,19 @@
 <script>
 import UsersComponent from './components/UsersComponent.vue'
 import MenuComponent from './components/MenuComponent.vue'
+import LogComponent from './components/LogComponent.vue'
 export default {
+  computed: {
+    // login(){
+    //   console.log("comp" + this.$store.state.showlogin)
+    //   return this.$store.state.showlogin
+    // }
+  },
   name: 'app',
   components: {
       MenuComponent,
-      UsersComponent
+      UsersComponent,
+      LogComponent
   }
 }
 </script>

@@ -7,20 +7,28 @@
                 app
         >
             <v-list dense>
-                <v-list-tile @click="">
+                <v-list-tile @click="loginRedirect">
                     <v-list-tile-action>
-                        <v-icon>dashboard</v-icon>
+                        <v-icon>lock_open</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                        <v-list-tile-title>Dashboard</v-list-tile-title>
+                        <v-list-tile-title>Log in</v-list-tile-title>
+                    </v-list-tile-content>
+                </v-list-tile>
+                 <v-list-tile @click="registerRedirect">
+                    <v-list-tile-action>
+                        <v-icon>person_add</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-content>
+                        <v-list-tile-title>Register</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
                 <v-list-tile @click="">
                     <v-list-tile-action>
-                        <v-icon>settings</v-icon>
+                        <v-icon>lock</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                        <v-list-tile-title>Settings</v-list-tile-title>
+                        <v-list-tile-title>Log out</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
             </v-list>
@@ -42,6 +50,16 @@
         data: () => ({
             drawer: null
         }),
+        methods:{
+            loginRedirect(){
+                this.$store.commit('redirect', 1)
+                //this.$store.state.showlogin=1-this.$store.state.showlogin;
+            },
+            registerRedirect(){
+                this.$store.commit('redirect', 2)
+                //this.$store.state.showlogin=1-this.$store.state.showlogin;
+            }
+        },
         props: {
             source: String
         }
