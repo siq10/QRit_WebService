@@ -1,13 +1,26 @@
 const express = require('express');
 const cors = require("cors");
+// const path = require('path')
+const fs = require('fs');
+const https = require('https');
+
+var certOptions = {
+    key: fs.readFileSync('certs/server.key'),
+    cert: fs.readFileSync('certs/server.crt'),
+    ca: fs.readFileSync("certs/ca.pem"),
+    requestCert: true,
+    rejectUnauthorized: false
+}
 
 const app = express();
+
 
 app.use(cors());
 
 const users = require('./routes/api/users');
 
 app.use('/api/users',users);
+
 
 // Changes needed for production
 if (process.env.NODE_ENV === "production")
@@ -18,4 +31,5 @@ if (process.env.NODE_ENV === "production")
 }
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => console.log("Server started on port " + port));
+
+var server = https.createServer(certOptions, app).listen(port, () => console.log("Server started on port " + port));
