@@ -23,6 +23,14 @@
                         <v-list-tile-title>Register</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
+                <v-list-tile @click="productsRedirect">
+                    <v-list-tile-action>
+                        <v-icon>restaurant_menu</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-content>
+                        <v-list-tile-title>Places</v-list-tile-title>
+                    </v-list-tile-content>
+                </v-list-tile>
                 <v-list-tile @click="">
                     <v-list-tile-action>
                         <v-icon>lock</v-icon>
@@ -58,6 +66,9 @@
             registerRedirect(){
                 this.$store.commit('redirect', 2)
                 //this.$store.state.showlogin=1-this.$store.state.showlogin;
+            },
+            productsRedirect(){
+                this.$store.commit('redirect', 3)
             }
         },
         props: {

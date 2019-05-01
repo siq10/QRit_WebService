@@ -8,7 +8,7 @@ const mutations = {
     redirect (state,choice) {
         // mutate state
         state.menuchoice=choice
-        console.log(choice);
+        //console.log(choice);
       }
 }
 

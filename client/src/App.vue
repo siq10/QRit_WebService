@@ -5,6 +5,7 @@
       <v-container fluid>
         <UsersComponent v-if="$store.state.menuchoice===2"></UsersComponent>
         <LogComponent v-if="$store.state.menuchoice===1"></LogComponent>
+        <PlacesComponent v-if="$store.state.menuchoice===3"></PlacesComponent>
         <router-view></router-view>
       </v-container>
     </v-content>
@@ -15,6 +16,7 @@
 import UsersComponent from './components/UsersComponent.vue'
 import MenuComponent from './components/MenuComponent.vue'
 import LogComponent from './components/LogComponent.vue'
+import PlacesComponent from './components/PlacesComponent.vue'
 export default {
   computed: {
     // login(){
@@ -26,7 +28,8 @@ export default {
   components: {
       MenuComponent,
       UsersComponent,
-      LogComponent
+      LogComponent,
+      PlacesComponent
   }
 }
 </script>
