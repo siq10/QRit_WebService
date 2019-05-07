@@ -3,6 +3,8 @@ const cors = require("cors");
 const fs = require('fs');
 const https = require('https');
 
+const jwt = require('jsonwebtoken');
+
 var certOptions = {
     key: fs.readFileSync('certs/server.key'),
     cert: fs.readFileSync('certs/server.crt'),

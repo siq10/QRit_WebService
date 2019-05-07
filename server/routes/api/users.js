@@ -1,8 +1,7 @@
 const express = require("express");
 const axios = require("axios");
-
 const router = express.Router();
-
+const jwt = require('jsonwebtoken');
 // const getBreeds = () => {
 //     try {
 //         return axios.get('https://dog.ceo/api/breeds/list/all')
@@ -10,6 +9,7 @@ const router = express.Router();
 //         console.error(error)
 //     }
 // }
+
 const getfromlaravel = () => {
     try {
         return axios.get('http://127.0.0.1:8000/api/test')
