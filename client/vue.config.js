@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-console.log(fs.readFileSync("../certs/server.key"));
+
 module.exports = {
     outputDir: path.resolve(__dirname,'../server/public'),
     devServer: {
