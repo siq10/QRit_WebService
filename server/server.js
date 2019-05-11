@@ -20,6 +20,9 @@ const users = require('./routes/api/users');
 
 app.use('/api/users',users);
 
+const places = require('./routes/api/places');
+
+app.use('/api/places',places);
 
 // Changes needed for production
 if (process.env.NODE_ENV === "production")

@@ -29,7 +29,7 @@
             
           </v-card-actions>
         </v-card>
-
+<!-- 
          <br>
         <v-card>
           <v-img
@@ -136,7 +136,7 @@
             <v-btn large round depressed :color="color" class="mx-auto" @click="colchange">Check place</v-btn>
             
           </v-card-actions>
-        </v-card>
+        </v-card> -->
       </v-flex>
     </v-layout>
   </v-app>
@@ -144,10 +144,13 @@
 </template>
 
 <script>
+import PlacesService from "../PlacesService"
+
 export default {
     name: 'PlacesComponent',
     data() {
         return{
+        list:null,
         name:"",
         rating: 3,
         color:"grey lighten-2"
@@ -156,7 +159,16 @@ export default {
     methods:{
         colchange(){
         this.color = this.color === "blue"?"grey lighten-2":"blue";
+        },
+         getPlaces: function(){
+           this.data = PlacesService.getPlaces().then((data) => {
+            console.log(data)
+          })
         }
+      },
+       mounted: function () {
+        this.getPlaces();
     }
+    
 }
 </script>
