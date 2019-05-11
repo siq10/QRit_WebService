@@ -16,6 +16,9 @@ class UsersService {
             }
         })
     }
+    static postUser(user) {
+        return axios.post(url,user)
+    }
 }
 
 export default UsersService

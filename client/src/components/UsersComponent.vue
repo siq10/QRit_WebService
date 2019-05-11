@@ -88,10 +88,21 @@ export default {
       }
   },
     methods:{
-        register(){
+        async register(){
             if(this.$refs.registerform.validate())
             {
-
+                var user = {}
+                user.firstname = this.firstname
+                user.lastname = this.lastname
+                user.email = this.email
+                user.password = this.password
+                console.log(user)
+                var response = await UsersService.postUser(user)
+//                console.log(response)
+                if(response.status == 201)
+                    {
+                        alert("Success!")
+                    }
             }
             
      },
@@ -101,7 +112,7 @@ export default {
       try{
           this.udata = UsersService.getUsers().then((data) => {
               console.log(data)
-              this.test = data
+//              this.test = data
               //alert("done1") 
           })
       }

@@ -3,8 +3,6 @@ const cors = require("cors");
 const fs = require('fs');
 const https = require('https');
 
-const jwt = require('jsonwebtoken');
-
 var certOptions = {
     key: fs.readFileSync('certs/server.key'),
     cert: fs.readFileSync('certs/server.crt'),
@@ -14,7 +12,13 @@ var certOptions = {
 }
 
 const app = express();
+const bodyParser = require('body-parser');
 
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 app.use(cors());
 
