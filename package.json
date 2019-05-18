@@ -27,6 +27,8 @@
     "selfsigned": "^1.10.4"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10"
   }
 }
