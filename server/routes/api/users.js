@@ -26,22 +26,17 @@ const postRequest = (user) => {
     }
 }
 router.get('/', (req,res) => {
-    // getBreeds(req,res).then(response => {
-    //     if(response.data)
-    //         console.log(response.data)
-    //     res.send(response.data.message);
-    // })
     getfromlaravel(req,res).then(response => {
         if(response.data)
             console.log(response.data)
         res.send(response.data);
-    })
+    },(reason)=>console.log(reason))
 })
 
 router.post('/',async (req,res) =>{
     try{
         var response = await postRequest(req.body)
-        console.log(response)
+        console.log(req.body)
         res.status(201).send()
     }
     catch(err)

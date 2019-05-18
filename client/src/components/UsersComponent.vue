@@ -51,11 +51,14 @@
               </v-layout>
           </v-container>
       </v-form>
-  <!--</div>-->
+
+    <!--</div>-->
 </template>
 
 <script>
 import UsersService from "../UsersService"
+import QrsService from "../QrsService"
+
 export default {
   name: 'UsersComponent',
   data() {
@@ -84,7 +87,6 @@ export default {
               v => v.length <= 50 || "Password must be less or equal to 50 characters"
           ],
           data:{},
-          test:"",
       }
   },
     methods:{
@@ -109,17 +111,7 @@ export default {
 
     },
   created(){
-      try{
-          this.udata = UsersService.getUsers().then((data) => {
-              console.log(data)
-//              this.test = data
-              //alert("done1") 
-          })
-      }
-      catch(err)
-      {
-          console.log(err)
-      }
+
   }
 }
 </script>
