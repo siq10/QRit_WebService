@@ -54,7 +54,7 @@ echo
 echo "Run the next command form terminal to create the server certificate file"
 #openssl x509 -req -extfile <(printf "subjectAltName=DNS.1:localhost,IP.1=192.168.1.101") -days $VALID_DAYS -in $SERVER_CSR -CAcreateserial -CA $CA_CERT -CAkey $CA_KEY -$FINGERPRINT -out $SERVER_CERT
 echo
-echo 'openssl x509 -req -extfile <(printf "subjectAltName=DNS.1:localhost,IP.1:192.168.1.101,IP.2:192.168.100.7,IP.3:10.37.253.163") -days 365 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -sha512 -out server.crt'
+echo 'openssl x509 -req -extfile <(printf "subjectAltName=DNS.1:localhost,IP.1:192.168.1.101,IP.2:192.168.100.7,IP.3:10.37.253.163-") -days 365 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -sha512 -out server.crt'
 echo
 echo "Test using:"
 echo
