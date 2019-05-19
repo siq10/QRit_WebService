@@ -39,6 +39,14 @@
                         <v-list-tile-title>Log out</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
+                <v-list-tile @click="testsRedirect">
+                    <v-list-tile-action>
+                        <v-icon>tablet_android</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-content>
+                        <v-list-tile-title>Tests</v-list-tile-title>
+                    </v-list-tile-content>
+                </v-list-tile>
             </v-list>
         </v-navigation-drawer>
         <v-toolbar app fixed clipped-left>
@@ -69,6 +77,9 @@
             },
             productsRedirect(){
                 this.$store.commit('redirect', 3)
+            },
+            testsRedirect(){
+                this.$store.commit('redirect', 4)
             }
         },
         props: {

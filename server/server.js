@@ -30,6 +30,10 @@ const places = require('./routes/api/places');
 
 app.use('/api/places',places);
 
+const qrs = require('./routes/api/qrs');
+
+app.use('/api/qrs',qrs);
+
 // Changes needed for production
 if (process.env.NODE_ENV === "production")
 {

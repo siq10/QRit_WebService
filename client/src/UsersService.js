@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = 'api/users';
+const url = '/api/users';
 
 class UsersService {
     static getUsers() {
