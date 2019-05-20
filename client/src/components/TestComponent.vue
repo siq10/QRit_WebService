@@ -9,6 +9,11 @@
                          height="300px">
                 </v-flex>
             </v-layout>
+            <v-layout wrap>
+                <v-flex xs12 md6>
+                    <v-btn @click.prevent="webpush" large>WebPush</v-btn>
+                </v-flex>
+            </v-layout>
         </v-container>
 </template>
 
@@ -35,6 +40,9 @@
             {
                 console.log(err)
             }
+        },
+        webpush(){
+            this.$eventHub.$emit('webpush-example');
         }
         },
         created(){

@@ -6,7 +6,7 @@ const routes = [
     //         { path: '/tables', component: TablesView, name: 'Tables'},
     //     ]
     // },
-    // { path: '*', component: NotFoundView }
+    // { path: '*', component:app  }
 ]
 
 export default routes

@@ -10,6 +10,7 @@
         <router-view></router-view>
       </v-container>
     </v-content>
+    <PushComponent></PushComponent>
   </v-app>
 </template>
 
@@ -19,6 +20,7 @@ import MenuComponent from './components/MenuComponent.vue'
 import LogComponent from './components/LogComponent.vue'
 import PlacesComponent from './components/PlacesComponent.vue'
 import TestComponent from './components/TestComponent.vue'
+import PushComponent from './components/PushComponent.vue'
 export default {
   computed: {
     // login(){
@@ -32,7 +34,8 @@ export default {
       UsersComponent,
       LogComponent,
       PlacesComponent,
-      TestComponent
+      TestComponent,
+      PushComponent,
   }
 }
 </script>

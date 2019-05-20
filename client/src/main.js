@@ -14,7 +14,7 @@ var router = new VueRouter({
     routes: routes,
     mode: 'history'
 })
-
+Vue.prototype.$eventHub = new Vue();
 new Vue({
   router: router,
   store: store,
