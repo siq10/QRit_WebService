@@ -14,7 +14,7 @@ const getfromlaravel = () => {
     try {
         return axios.get('http://127.0.0.1:8000/api/test')
     } catch (error) {
-        console.error(error)
+        console.error("No connection to the database yet\n" + error)
     }
 }
 const postRequest = (user) => {
