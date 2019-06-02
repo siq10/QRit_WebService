@@ -39,6 +39,16 @@
                         <v-list-tile-title>Log out</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
+
+                 <v-list-tile @click="viewTypeRedirect">
+                    <v-list-tile-action>
+                        <v-icon>visibility</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-content>
+                        <v-list-tile-title>Change User Type</v-list-tile-title>
+                    </v-list-tile-content>
+                </v-list-tile>
+
                 <v-list-tile @click="testsRedirect">
                     <v-list-tile-action>
                         <v-icon>tablet_android</v-icon>
@@ -80,6 +90,9 @@
             },
             testsRedirect(){
                 this.$store.commit('redirect', 4)
+            },
+            viewTypeRedirect(){
+                this.$store.commit('redirect', 5)
             }
         },
         props: {

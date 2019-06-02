@@ -7,6 +7,7 @@
         <LogComponent v-if="$store.state.menuchoice===1"></LogComponent>
         <PlacesComponent v-if="$store.state.menuchoice===3"></PlacesComponent>
         <TestComponent v-if="$store.state.menuchoice===4"></TestComponent>
+        <ViewTypeComponent v-if="$store.state.menuchoice===5"></ViewTypeComponent>
         <router-view></router-view>
       </v-container>
     </v-content>
@@ -21,6 +22,7 @@ import LogComponent from './components/LogComponent.vue'
 import PlacesComponent from './components/PlacesComponent.vue'
 import TestComponent from './components/TestComponent.vue'
 import PushComponent from './components/PushComponent.vue'
+import ViewTypeComponent from './components/ViewTypeComponent.vue'
 export default {
   computed: {
     // login(){
@@ -36,6 +38,7 @@ export default {
       PlacesComponent,
       TestComponent,
       PushComponent,
+      ViewTypeComponent,
   }
 }
 </script>
