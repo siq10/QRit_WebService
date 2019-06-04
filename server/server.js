@@ -41,6 +41,10 @@ app.use('/api/places',places);
 const tables = require('./routes/api/tables');
 app.use('/api/tables',tables);
 
+
+const orders = require('./routes/api/orders');
+app.use('/api/orders',orders);
+
 const qrs = require('./routes/api/qrs');
 app.use('/api/qrs',qrs);
 

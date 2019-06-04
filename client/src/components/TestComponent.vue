@@ -14,17 +14,23 @@
                     <v-btn @click.prevent="webpush" large>WebPush</v-btn>
                 </v-flex>
             </v-layout>
+            <v-layout wrap>
+                <v-flex xs12 md6>
+                    <v-btn @click.prevent="ordersList" large>OrdersList</v-btn>
+                </v-flex>
+            </v-layout>
         </v-container>
 </template>
 
 <script>
     import QrsService from "../QrsService"
-
+    import  OrdersService from "../OrdersService"
     export default {
         name: 'TestComponent',
         data() {
             return {
                 qrbase64:"",
+                orders:[],
             }
         },
         methods:{
@@ -43,7 +49,15 @@
         },
         webpush(){
             this.$eventHub.$emit('webpush-example');
+        },
+        ordersList(){
+           OrdersService.getOrders().then((data) => {
+             this.orders=data.payload
+             console.log(data.payload)
+
+          })
         }
+
         },
         created(){
 

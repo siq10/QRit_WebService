@@ -40,8 +40,8 @@
                     </v-list-tile-content>
                 </v-list-tile>
 
-                  <v-list-tile v-if=" $store.state.userType==='manager' " @click="QRListRedirect"> 
-                <!-- <v-list-tile @click="QRListRedirect">  -->
+                <!--  <v-list-tile v-if=" $store.state.userType==='manager' " @click="QRListRedirect"> -->
+                 <v-list-tile @click="QRListRedirect"> 
                     <v-list-tile-action>
                         <v-icon>assignment</v-icon>
                     </v-list-tile-action>
@@ -50,7 +50,16 @@
                     </v-list-tile-content>
                 </v-list-tile>
 
+                <v-list-tile @click="OrdersRedirect"> 
+                    <v-list-tile-action>
+                        <v-icon>assignment</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-content>
+                        <v-list-tile-title>See Orders</v-list-tile-title>
+                    </v-list-tile-content>
+                </v-list-tile>
 
+                
 
                 <v-list-tile @click="viewTypeRedirect">
                     <v-list-tile-action>
@@ -109,6 +118,9 @@
 
             QRListRedirect(){
                 this.$store.commit('redirect', 6)
+            },
+            OrdersRedirect(){
+                this.$store.commit('redirect',7)
             }
         },
         props: {

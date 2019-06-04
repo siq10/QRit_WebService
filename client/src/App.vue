@@ -10,6 +10,7 @@
         <TestComponent v-if="$store.state.menuchoice===4"></TestComponent>
         <ViewTypeComponent v-if="$store.state.menuchoice===5"></ViewTypeComponent>
         <QRListComponent v-if=" $store.state.menuchoice===6 "></QRListComponent>
+        <OrdersListComponent v-if=" $store.state.menuchoice===7 "></OrdersListComponent>
         <router-view></router-view>
       </v-container>
     </v-content>
@@ -26,6 +27,8 @@ import TestComponent from './components/TestComponent.vue'
 import PushComponent from './components/PushComponent.vue'
 import ViewTypeComponent from './components/ViewTypeComponent.vue'
 import QRListComponent from './components/QRListComponent.vue'
+import OrdersListComponent from './components/OrdersListComponent.vue'
+
 export default {
   computed: {
     // login(){
@@ -44,6 +47,7 @@ export default {
       PushComponent,
       ViewTypeComponent,
       QRListComponent,
+      OrdersListComponent,
   }
 }
 </script>

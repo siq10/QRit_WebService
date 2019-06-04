@@ -28,7 +28,9 @@
             </div>
           </v-card-title>
           <v-card-actions>
-            <v-btn large round depressed >See QR CODE</v-btn>  
+            <!--<v-btn large round depressed @click.prevent="seeBtn" >See QR CODE</v-btn>  -->
+            <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">show QR CODE image</button>
+             <example-modal ref="modal"></example-modal>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -39,7 +41,6 @@
 </template>
 
 <script>
-
 
 import TablesService from "../TablesService"
 export  default {
@@ -66,9 +67,13 @@ export  default {
                data.payload[i].qr = "data:image/png;base64,"+data.payload[i].qr+" "
           }
         })
-      }
+      },
+
+   
+      
 
     },
+   
 
 
     mounted: function () {
