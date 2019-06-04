@@ -8,7 +8,7 @@ const webpush = require('web-push');
 // var certOptions = {
 //     key: fs.readFileSync('certs/server.key'),
 //     cert: fs.readFileSync('certs/server.crt'),
-//     ca: fs.readFileSync("certs/ca.pem"),
+//     ca: fs.readFileSync("certs/ca.crt"),
 //     requestCert: false,
 //     rejectUnauthorized: false
 // }
