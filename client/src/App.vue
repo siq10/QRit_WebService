@@ -1,8 +1,11 @@
 <template>
   <v-app dark>
 
+
     <menu-component></menu-component>
+
     <v-content>
+     <HomeComponent v-if="$store.state.menuchoice===0"></HomeComponent>
       <v-container fluid>
         <UsersComponent v-if="$store.state.menuchoice===2"></UsersComponent>
         <LogComponent v-if="$store.state.menuchoice===1"></LogComponent>
@@ -19,6 +22,7 @@
 </template>
 
 <script>
+import HomeComponent from './components/HomeComponent.vue'
 import UsersComponent from './components/UsersComponent.vue'
 import MenuComponent from './components/MenuComponent.vue'
 import LogComponent from './components/LogComponent.vue'
@@ -39,6 +43,7 @@ export default {
       },
   name: 'app',
   components: {
+      HomeComponent,
       MenuComponent,
       UsersComponent,
       LogComponent,

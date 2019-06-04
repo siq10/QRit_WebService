@@ -82,7 +82,10 @@
         </v-navigation-drawer>
         <v-toolbar app fixed clipped-left>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-            <v-toolbar-title>QRit</v-toolbar-title>
+            <v-toolbar-title > <router-link class ="white--text" to="/">
+     <span class ="white--text" v-on:click="HomeRedirect">QRit</span>
+</router-link>
+</v-toolbar-title>
         </v-toolbar>
 
         <v-footer app fixed>
@@ -98,6 +101,11 @@
             drawer: null
         }),
         methods:{
+
+        	HomeRedirect(){
+                this.$store.commit('redirect',0)
+            },
+
             loginRedirect(){
                 this.$store.commit('redirect', 1)
                 //this.$store.state.showlogin=1-this.$store.state.showlogin;
@@ -121,7 +129,9 @@
             },
             OrdersRedirect(){
                 this.$store.commit('redirect',7)
-            }
+            },
+
+
         },
         props: {
             source: String

@@ -6,6 +6,12 @@ import routes from './routes'
 import store from './store'
 import 'material-design-icons-iconfont/dist/material-design-icons.css' // Ensure you are using css-loader
 
+
+import VueCarousel from 'vue-carousel';
+
+
+Vue.use(VueCarousel);
+
 Vue.use(VueRouter)
 Vue.use(Vuetify)
 Vue.config.productionTip = false
