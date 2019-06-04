@@ -37,6 +37,10 @@ app.use('/api/users',users);
 const places = require('./routes/api/places');
 app.use('/api/places',places);
 
+
+const tables = require('./routes/api/tables');
+app.use('/api/tables',tables);
+
 const qrs = require('./routes/api/qrs');
 app.use('/api/qrs',qrs);
 

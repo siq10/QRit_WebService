@@ -1,5 +1,6 @@
 <template>
   <v-app dark>
+
     <menu-component></menu-component>
     <v-content>
       <v-container fluid>
@@ -8,6 +9,7 @@
         <PlacesComponent v-if="$store.state.menuchoice===3"></PlacesComponent>
         <TestComponent v-if="$store.state.menuchoice===4"></TestComponent>
         <ViewTypeComponent v-if="$store.state.menuchoice===5"></ViewTypeComponent>
+        <QRListComponent v-if=" $store.state.menuchoice===6 "></QRListComponent>
         <router-view></router-view>
       </v-container>
     </v-content>
@@ -23,13 +25,15 @@ import PlacesComponent from './components/PlacesComponent.vue'
 import TestComponent from './components/TestComponent.vue'
 import PushComponent from './components/PushComponent.vue'
 import ViewTypeComponent from './components/ViewTypeComponent.vue'
+import QRListComponent from './components/QRListComponent.vue'
 export default {
   computed: {
     // login(){
     //   console.log("comp" + this.$store.state.showlogin)
     //   return this.$store.state.showlogin
     // }
-  },
+     
+      },
   name: 'app',
   components: {
       MenuComponent,
@@ -39,6 +43,7 @@ export default {
       TestComponent,
       PushComponent,
       ViewTypeComponent,
+      QRListComponent,
   }
 }
 </script>

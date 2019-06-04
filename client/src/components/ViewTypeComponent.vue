@@ -81,6 +81,8 @@ export  default {
     	viewType: function(){
     		console.log(this.checkedTypes);
     		this.$store.commit("changeType",this.checkedTypes);
+         this.$store.commit('redirect', 6);
+
     	}
       }
     }
