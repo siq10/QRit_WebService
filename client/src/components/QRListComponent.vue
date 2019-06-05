@@ -28,34 +28,56 @@
             </div>
           </v-card-title>
           <v-card-actions>
-            <!--<v-btn large round depressed @click.prevent="seeBtn" >See QR CODE</v-btn>  -->
-            <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">show QR CODE image</button>
-             <example-modal ref="modal"></example-modal>
+
+           <div>
+    <transition name="modal">
+      <div v-if="isOpen">
+        <div class="overlay" @click.self="isOpen = false;">
+          <div class="modal">
+            <h1 class="green--text left">QR CODE</h1>
+          
+          </div>
+        </div>
+      </div>
+    </transition>
+    <button @click="isOpen = !isOpen;">
+      {{ isOpen ? "Close" : "Open" }} here for details
+    </button>
+  </div>
+
+
+
+
+
           </v-card-actions>
         </v-card>
       </v-flex>
     </v-layout>
   </v-app>
  
-    
+
 </template>
 
 <script>
 
 import TablesService from "../TablesService"
+
+
+
+
 export  default {
+
   	name: 'QRListComponent',
   	data() {
       return {
          list:null,
         tables:[],
         qr:" ",
+        isOpen: false,
       }
       },
 
     methods:{
-    	
-
 
     getTables: function(){
 
@@ -69,20 +91,72 @@ export  default {
         })
       },
 
-   
-      
-
-    },
-   
-
-
+},
     mounted: function () {
         this.getTables();
     }
 
-            
+      
+    
     }
 
 </script>
 
 
+
+
+
+
+<style scoped>
+
+.left {
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.modal {
+  width: 800px;
+  margin: 0px auto;
+  padding: 150px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: all 0.2s ease-in;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.fadeIn-enter {
+  opacity: 0;
+}
+
+.fadeIn-leave-active {
+  opacity: 0;
+  transition: all 0.2s step-end;
+}
+
+.fadeIn-enter .modal,
+.fadeIn-leave-active.modal {
+  transform: scale(1.1);
+}
+button {
+  padding: 7px;
+  margin-top: 10px;
+  background-color: green;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: #00000094;
+  z-index: 999;
+  transition: opacity 0.2s ease;
+}
+</style>
