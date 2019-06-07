@@ -1,17 +1,8 @@
 const express = require('express');
 const cors = require("cors");
-// const fs = require('fs');
-// const https = require('https');
 const http = require('http');
 const webpush = require('web-push');
 
-// var certOptions = {
-//     key: fs.readFileSync('certs/server.key'),
-//     cert: fs.readFileSync('certs/server.crt'),
-//     ca: fs.readFileSync("certs/ca.crt"),
-//     requestCert: false,
-//     rejectUnauthorized: false
-// }
 
 const publicVapidKey = "BHKYhmiTHfLUHeC360qI6aCS5w8d87sZdG4bbiWtbv2az4IBtDFAtu2jYSsKctfbWSPp-FNvfqeFrH1toH9gm64"
 const privateVapidKey = "SC8zk9tKGHt7MXGRO3ADcEkCm3GACWweMKoZA57roSc"
@@ -38,23 +29,8 @@ app.use('/api/users',users);
 const places = require('./routes/api/places');
 app.use('/api/places',places);
 
-
-const tables = require('./routes/api/tables');
-app.use('/api/tables',tables);
-
-
-const orders = require('./routes/api/orders');
-app.use('/api/orders',orders);
-
 const qrs = require('./routes/api/qrs');
 app.use('/api/qrs',qrs);
-
-const auths  = require('./routes/api/auths');
-app.use('/api/auths',auths);
-
-const menus  = require('./routes/api/menus');
-app.use('/api/menus',menus);
-
 
 // Changes needed for production
 if (process.env.NODE_ENV === "production")
@@ -72,8 +48,7 @@ else
     })
 }
 
+
 const port = process.env.PORT || 5000;
 
-
-// var server = https.createServer(certOptions, app).listen(port, () => console.log("Server started on port " + port));
 var server = http.createServer(app).listen(port, () => console.log("Server started on port " + port));

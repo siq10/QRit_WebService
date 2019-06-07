@@ -9,6 +9,7 @@ module.exports = {
             cert: fs.readFileSync("../certs/server.crt"),
             key: fs.readFileSync("../certs/server.key"),
             ca: fs.readFileSync("../certs/ca.crt")
+
         },
         proxy:{
             '/api':{
