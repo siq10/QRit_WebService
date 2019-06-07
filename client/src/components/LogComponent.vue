@@ -1,6 +1,6 @@
 <template>
           <v-container app>
-            <v-form lazy-validation ref="loginform" v-model="valid"/>
+            <v-form lazy-validation ref="loginform" v-model="valid">
               <v-layout wrap>
                  
                   <v-flex xs12 md3>
@@ -23,9 +23,19 @@
                               required
                       ></v-text-field>
                   </v-flex>
-              <v-flex>
+              <v-flex xs12 md3>
                   <v-btn @click.prevent="login" large>Log In</v-btn>
               </v-flex>
+                  <v-flex>
+                  <v-alert
+                          class="my-5"
+                          :value="isError"
+                          type="error"
+                          outline
+                  >
+                      {{errorMessage}}
+                  </v-alert>
+                  </v-flex>
               </v-layout>
             </v-form>
           </v-container>
@@ -33,11 +43,14 @@
 
 <script>
 import UsersService from "../UsersService"
+import AuthService from "../AuthService"
 export default {
   name: 'LogComponent',
   data() {
       return {
           valid: false,
+          errorMessage:"",
+          isError:false,
           password:"",
           email: '',
           emailRules: [
@@ -54,13 +67,39 @@ export default {
           test:"",
       }
   },
-    methods:{
-        login(){
-            if(this.$refs.loginrform.validate())
-            {
+    computed:{
 
+    },
+    methods:{
+        async login(){
+            if(this.$refs.loginform.validate())
+            {
+                var auth = await AuthService.postAuth({"email":this.email,"password":this.password})
+                if(auth.status == 201)
+                    {
+//                        console.log(auth.data)
+                        this.isError = false
+                        this.errorMessage = ""
+                        await Promise.all([this.$store.commit("setToken",auth.data[0]),this.$store.commit("setUser",auth.data[1])])
+
+//                        console.log(this.$store.state.bearer_token)
+                        console.log(this.$store.state.current_user)
+                        this.$store.commit("redirect",3)
+                }
+                else{
+                    if(auth.status == 422)
+                        {
+                            this.errorMessage = "These credentials are wrong!"
+                            this.isError = true
+                        }
+                    else{
+                        this.errorMessage = "Unknown error! Please try again later!"
+                        this.isError = true
+                    }
+                }
+//                console.log(auth)
             }
-     },
+        },
 
     },
   created(){
