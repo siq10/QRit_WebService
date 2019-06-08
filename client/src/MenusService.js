@@ -1,12 +1,12 @@
 import axios from "axios";
 
-const url = 'api/auths';
+const url = 'api/menus';
 
-class AuthService {
+class MenusService {
     //post
 
-    static postAuth(credentials) {
-        return axios.post(url,credentials).catch((error) => {
+    static getMenu(placeid) {
+        return axios.get(url,{params:{placeid: placeid}}).catch((error) => {
             if(error.response)
             {
                 return error.response
@@ -19,4 +19,4 @@ class AuthService {
 
 }
 
-export default AuthService
+export default MenusService

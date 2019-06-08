@@ -48,6 +48,13 @@ app.use('/api/orders',orders);
 const qrs = require('./routes/api/qrs');
 app.use('/api/qrs',qrs);
 
+const auths  = require('./routes/api/auths');
+app.use('/api/auths',auths);
+
+const menus  = require('./routes/api/menus');
+app.use('/api/menus',menus);
+
+
 // Changes needed for production
 if (process.env.NODE_ENV === "production")
 {

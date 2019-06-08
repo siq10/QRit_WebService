@@ -9,11 +9,13 @@
       <v-container fluid>
         <UsersComponent v-if="$store.state.menuchoice===2"></UsersComponent>
         <LogComponent v-if="$store.state.menuchoice===1"></LogComponent>
+        <StartComponent v-if="$store.state.menuchoice===6 && $store.state.current_user.email"></StartComponent>
         <PlacesComponent v-if="$store.state.menuchoice===3"></PlacesComponent>
         <TestComponent v-if="$store.state.menuchoice===4"></TestComponent>
         <ViewTypeComponent v-if="$store.state.menuchoice===5"></ViewTypeComponent>
         <QRListComponent v-if=" $store.state.menuchoice===6 "></QRListComponent>
         <OrdersListComponent v-if=" $store.state.menuchoice===7 "></OrdersListComponent>
+        <ProfileComponent v-if="$store.state.menuchoice===5 && $store.state.current_user.email"></ProfileComponent>
         <router-view></router-view>
       </v-container>
     </v-content>
@@ -32,7 +34,8 @@ import PushComponent from './components/PushComponent.vue'
 import ViewTypeComponent from './components/ViewTypeComponent.vue'
 import QRListComponent from './components/QRListComponent.vue'
 import OrdersListComponent from './components/OrdersListComponent.vue'
-
+import ProfileComponent from './components/ProfileComponent.vue'
+import StartComponent from './components/StartComponent.vue'
 export default {
   computed: {
     // login(){
@@ -53,6 +56,8 @@ export default {
       ViewTypeComponent,
       QRListComponent,
       OrdersListComponent,
+      ProfileComponent,
+      StartComponent
   }
 }
 </script>
