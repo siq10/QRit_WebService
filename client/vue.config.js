@@ -8,11 +8,12 @@ module.exports = {
         https: {
             cert: fs.readFileSync("../certs/server.crt"),
             key: fs.readFileSync("../certs/server.key"),
-            ca: fs.readFileSync("../certs/ca.pem")
+            ca: fs.readFileSync("../certs/ca.crt")
+
         },
         proxy:{
             '/api':{
-                target:'https://localhost:5000',
+                target:'http://localhost:5000',
                  ws: true,
                  
             }

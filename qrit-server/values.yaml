@@ -1,0 +1,74 @@
+# Default values for qrit_server.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 2
+
+image:
+  repository: eccod/qrit-server-app-http
+  tag: latest
+  pullPolicy: Always
+  pullPolicyLaravel: Always
+  pullSecret:
+    name: regcred
+
+imagePullSecrets: [ name: regcred]
+nameOverride: ""
+fullnameOverride: ""
+testConnection:
+  restartPolicy: "OnFailure"
+#  restartPolicy: "Never"
+
+
+service:
+#  type: ClusterIP
+  type: NodePort
+#  type: LoadBalancer
+  # Port is the port number which makes a service visible to other services running within the same K8s cluster.
+  port: 80
+  # Node port is the port on which the service can be accessed from external users using Kube-Proxy.
+  nodePort: ''
+  # Target port is the port on the POD where the service is running
+  targetPort: 5000
+  name: http
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+    kubernetes.io/force-ssl-redirect: "true"
+    # Enable client certificate authentication
+    kubernetes.io/auth-tls-verify-client: "on"
+    # Create the secret containing the trusted ca certificates
+    kubernetes.io/auth-tls-secret: "default/ca-secret"
+    # Specify the verification depth in the client certificates chain
+    kubernetes.io/auth-tls-verify-depth: "2"
+    # Specify if certificates are passed to upstream server
+    kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
+  hosts:
+    - host: qritserver
+      paths: [ / ]
+
+  tls:
+    - secretName: qrit-server-tls
+      hosts:
+        - qritserver
+
+resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+   #limits:
+    # cpu: 100m
+    # memory: 3Gi
+   #requests:
+    # cpu: 100m
+   #memory: 3Gi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

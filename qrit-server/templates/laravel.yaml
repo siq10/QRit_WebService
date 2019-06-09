@@ -1,0 +1,68 @@
+#deploy the Laravel container from eccod/qrit-laravel-app
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+    name: laravel-dbconnect
+    labels:
+        qritserver/example: lamp
+spec:
+    replicas: 2
+    revisionHistoryLimit: 5
+    selector:
+        matchLabels:
+            app: laravel-dbconnect
+    template:
+        metadata:
+            labels:
+                app: laravel-dbconnect
+        spec:
+            containers:
+                #deploy laravel app in our container
+                - image: eccod/qrit-laravel-app
+                    # download a fresh copy of the image if available, even if it has the same version label
+                  imagePullPolicy: Always
+                  name: laravel-dbconnect
+                  resources:
+                      requests:
+                          cpu: 100m
+                          memory: 3Gi
+                  env:
+                      - name: MYSQL_USER
+                        valueFrom:
+                            # rather than embed sensitive details in this config
+                            # we reference another Kubernetes object
+                            # in this case, the Secret with the name: mysql-credentials
+                            secretKeyRef:
+                                name: mysql-credentials
+                                # references the user key-value pair from the mysql-credentials Secret
+                                key: user
+                      - name: MYSQL_PASSWORD
+                        valueFrom:
+                            secretKeyRef:
+                                name: mysql-credentials
+                                key: password
+                      - name: MYSQL_HOST
+                        value: mysql.default.svc.cluster.local
+                  livenessProbe:
+                      tcpSocket:
+                          port: 8000
+                  ports:
+                      - containerPort: 8000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: web
+    labels:
+        "qritserver/example": lamp
+spec:
+    ports:
+        # make the service available on this port
+        - port: 8000
+          protocol: TCP
+    selector:
+        # apply this service to the pod with the label app: mysql
+        app: laravel-dbconnect
+    type: LoadBalancer
